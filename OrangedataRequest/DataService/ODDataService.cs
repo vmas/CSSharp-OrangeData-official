@@ -26,30 +26,30 @@ namespace OrangedataRequest.DataService
 
         #region Public methods
 
-        public async Task<ODResponse> SendCheckAsync(ReqCreateCheck check)
+        public Task<ODResponse> SendCheckAsync(ReqCreateCheck check)
         {
             var requestBody = SerializationHelper.Serialize(check);
             var signature = ComputeSignature(requestBody);
 
-            return await SendRequestAsync<RespCreateCheck>($"{_apiUrl}/documents", HttpMethod.Post, requestBody, signature);
+            return SendRequestAsync<RespCreateCheck>($"{_apiUrl}/documents", HttpMethod.Post, requestBody, signature);
         }
 
-        public async Task<ODResponse> CreateCorrectionsCheckAsync(ReqCreateCorrectionCheck correctionCheck)
+        public Task<ODResponse> CreateCorrectionsCheckAsync(ReqCreateCorrectionCheck correctionCheck)
         {
             var requestBody = SerializationHelper.Serialize(correctionCheck);
             var signature = ComputeSignature(requestBody);
 
-            return await SendRequestAsync<RespCreateCheck>($"{_apiUrl}/corrections", HttpMethod.Post, requestBody, signature);
+            return SendRequestAsync<RespCreateCheck>($"{_apiUrl}/corrections", HttpMethod.Post, requestBody, signature);
         }
 
-        public async Task<ODResponse> GetCheckStateAsync(string INN, string documentId)
+        public Task<ODResponse> GetCheckStateAsync(string INN, string documentId)
         {
-            return await SendRequestAsync<RespCheckStatus>($"{_apiUrl}/documents/{INN}/status/{documentId}", HttpMethod.Get);
+            return SendRequestAsync<RespCheckStatus>($"{_apiUrl}/documents/{INN}/status/{documentId}", HttpMethod.Get);
         }
 
-        public async Task<ODResponse> GetCorrectionCheckStateAsync(string INN, string documentId)
+        public Task<ODResponse> GetCorrectionCheckStateAsync(string INN, string documentId)
         {
-            return await SendRequestAsync<RespCorrectionCheckStatus>($"{_apiUrl}/corrections/{INN}/status/{documentId}", HttpMethod.Get);
+            return SendRequestAsync<RespCorrectionCheckStatus>($"{_apiUrl}/corrections/{INN}/status/{documentId}", HttpMethod.Get);
         }
 
         #endregion Public methods

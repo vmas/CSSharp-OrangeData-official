@@ -22,9 +22,9 @@ namespace OrangedataRequest
         /// </summary>
         /// <param name="check">Чек</param>
         /// <returns></returns>
-        public async Task<ODResponse> CreateCheckAsync(ReqCreateCheck check)
+        public Task<ODResponse> CreateCheckAsync(ReqCreateCheck check)
         {
-            return await _dataService.SendCheckAsync(check);
+            return _dataService.SendCheckAsync(check);
         }
 
         /// <summary>
@@ -33,9 +33,9 @@ namespace OrangedataRequest
         /// <param name="INN">ИНН организации, для которой пробивается чек</param>
         /// <param name="documentId">Идентификатор документа, который был указан при его создании</param>
         /// <returns></returns>
-        public async Task<ODResponse> GetCheckStateAsync(string INN, string documentId)
+        public Task<ODResponse> GetCheckStateAsync(string INN, string documentId)
         {
-            return await _dataService.GetCheckStateAsync(INN, documentId);
+            return _dataService.GetCheckStateAsync(INN, documentId);
         }
 
         /// <summary>
@@ -43,9 +43,9 @@ namespace OrangedataRequest
         /// </summary>
         /// <param name="correctionCheck">Чек коррекции</param>
         /// <returns></returns>
-        public async Task<ODResponse> CreateCorrectionCheckAsync(ReqCreateCorrectionCheck correctionCheck)
+        public Task<ODResponse> CreateCorrectionCheckAsync(ReqCreateCorrectionCheck correctionCheck)
         {
-            return await _dataService.CreateCorrectionsCheckAsync(correctionCheck);
+            return  _dataService.CreateCorrectionsCheckAsync(correctionCheck);
         }
 
         /// <summary>
@@ -54,9 +54,9 @@ namespace OrangedataRequest
         /// <param name="INN">ИНН организации, для которой пробивается чек</param>
         /// <param name="documentId">Идентификатор документа, который был указан при его создании</param>
         /// <returns></returns>
-        public async Task<ODResponse> GetCorrectionCheckStateAsync(string INN, string documentId)
+        public Task<ODResponse> GetCorrectionCheckStateAsync(string INN, string documentId)
         {
-            return await _dataService.GetCorrectionCheckStateAsync(INN, documentId);
+            return _dataService.GetCorrectionCheckStateAsync(INN, documentId);
         }
     }
 }
